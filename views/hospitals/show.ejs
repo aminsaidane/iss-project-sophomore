@@ -1,0 +1,65 @@
+<% layout('layouts/boilerplate') %>
+
+<h1 class="text-center"><%=hospital.title %></h1>
+
+<div class="row">
+  <div class="col-11 offset-1">
+    <div class="card vh-50 mt-2 mb-4">
+      <img
+        style="max-height: 420px"
+        src="<%=hospital.imgUrl %>"
+        class="card-img-top img-fluid"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title"><%= hospital.title %></h5>
+        <p class="card-text"><%= hospital.description %></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%=hospital.location %></li>
+        <li class="list-group-item">email: <%= hospital.email %></li>
+        <li class="list-group-item">Number: <%=hospital.phoneNumber %></li>
+      </uls&s&>
+      <div class="card-body">
+        <a
+          class="card-link btn btn-secondary"
+          href="/hospitals/<%=hospital._id%>/edit"
+          >Edit</a
+        >
+        <form
+          class="d-inline"
+          action="/hospitals/<%=hospital._id%>?_method=DELETE"
+          method="post"
+        >
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mb-3">
+<%for(let doctor of hospital.doctors){%>
+  <div class="col-3 offset-1  ">
+    <div class="card mb-5">
+      <img
+        src="<%= doctor.imgUrl%>"
+        style="height: 18rem"
+        class="card-img-top"
+      />
+      <div class="card-body">
+        <h5 class="card-title"><%= doctor.name %> </h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">-<%= doctor.speciality %></li>
+      </ul>
+      <div class="card-body">
+        <a
+          class="card-link btn btn-primary"
+          href="/hospitals/<%=hospital._id%>/doctors/<%=doctor._id%>"
+          >Book Apointment</a
+        >
+      </div>
+    </div>
+  </div>
+<% }  %>
+</div>

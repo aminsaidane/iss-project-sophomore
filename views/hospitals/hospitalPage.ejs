@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospitals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .hospital-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .hospital-card {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .hospital-card h2 {
+            margin: 0 0 10px;
+        }
+        .hospital-card p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hospitals</h1>
+    <input type="text" class="search-bar" placeholder="Search hospitals..." onkeyup="filterHospitals()">
+    <div class="hospital-list" id="hospital-list">
+        <div class="hospital-card">
+            <h2>City Hospital</h2>
+            <p>Location: New York, NY</p>
+            <p>Rating: 4.5 ⭐</p>
+        </div>
+        <div class="hospital-card">
+            <h2>Green Valley Medical Center</h2>
+            <p>Location: Los Angeles, CA</p>
+            <p>Rating: 4.2 ⭐</p>
+        </div>
+        <div class="hospital-card">
+            <h2>Sunrise Health Clinic</h2>
+            <p>Location: Chicago, IL</p>
+            <p>Rating: 4.7 ⭐</p>
+        </div>
+        <div class="hospital-card">
+            <h2>Blue Ocean Hospital</h2>
+            <p>Location: Miami, FL</p>
+            <p>Rating: 4.3 ⭐</p>
+        </div>
+    </div>
+    <script>
+        function filterHospitals() {
+            let input = document.querySelector('.search-bar').value.toLowerCase();
+            let cards = document.querySelectorAll('.hospital-card');
+            cards.forEach(card => {
+                let name = card.querySelector('h2').textContent.toLowerCase();
+                card.style.display = name.includes(input) ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
